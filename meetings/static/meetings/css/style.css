@@ -1,0 +1,18 @@
+.calender_events {
+	
+	
+}
+.details {
+	margin: 2px;
+	background-color: #eee;
+	padding: 10px;
+}
+
+body {
+	width: 100%;
+	display: grid;
+}
+
+.page-center {
+	margin: auto;
+}

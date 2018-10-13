@@ -1,0 +1,19 @@
+{% extends 'meetings/base.html' %}
+
+{% block content %}
+<div class="contaier page-center text-center form-group">
+<br />
+	<h1>Signup</h1>
+	<form method="POST">
+		{% csrf_token %}
+		{% for field in form %}
+			{{field.errors}}
+			<label>{{field.label}}</label><br>
+			<input type="{%if 'password' %}password{% else %}input{% endif %}" name="{{field.name}}" placeholder="{{field.label}}" class="form-control"/>
+			<br/>
+		{% endfor %}
+		<button type="submit" class="btn btn-primary">Signup</button>	
+		<a href="/login" class="btn btn-primary">Login</a>	
+	</form><br/>
+</div>
+{% endblock %}

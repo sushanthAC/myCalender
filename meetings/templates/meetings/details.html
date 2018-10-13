@@ -1,0 +1,22 @@
+{% extends 'meetings/base.html' %}
+{% block content %}
+
+<div class="container jumbotron">
+	<div class="row">
+		<div class="col-lg-1">
+			<button onclick="window.location='{% url 'meetings' %}'" class='btn btn-success'>Back</button>			
+		</div>
+		<div class="col-lg-2">
+			&nbsp;&nbsp;&nbsp;<button onclick="window.location='{% url 'delete' meeting_details.id  %}'"" class='btn btn-danger'>Delete</button>			
+		</div>
+
+		<div class="col-lg-6"></div>
+	</div>
+	<br>
+	<br>
+	<h2><b>{{meeting_details.name}}</b></h2>
+	<hr>
+	<h4>{{meeting_details.date}}</h4>
+	<p>{{meeting_details.description}}</p>
+</div>
+{% endblock %}

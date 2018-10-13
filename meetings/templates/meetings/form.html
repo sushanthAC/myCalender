@@ -1,0 +1,25 @@
+{% extends 'meetings/base.html' %}
+
+{% block content %}
+<div class="container form-group">
+	<br>
+	<div class="row">
+		<div class="col-lg-6">			
+			<h2>Add new meeting</h2>
+		</div>
+		<div class="col-lg-6">
+			<button onclick="window.location='{% url 'index' %}'" class="btn btn-success">Back</button>
+		</div>
+	</div>
+	<form method="POST">
+	{% csrf_token %}
+
+	{% for field in form %}
+		{{ field.errors}}
+		<label>{{field.label}}</label>
+		<input type="{{field.type}}" class="form-control" name="{{field.name}}" placeholder="{{field.label}}"><br>
+	{% endfor %}
+	<button type="submit" class="btn btn-success">Submit</button>
+	</form>	
+</div>
+{% endblock %}

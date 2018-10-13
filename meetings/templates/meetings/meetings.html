@@ -1,0 +1,38 @@
+{% extends 'meetings/base.html' %}
+
+{% block content %}
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-6">
+			<h2>Calender Meeting</h2>
+			{% if request.user.is_authenticated %}
+				<span>Hello, {{ request.user.username }}</span>
+				<a href="/logout">Logout</a>
+			{% endif %}
+		</div>		
+		<div class="col-lg-6">
+			<button onclick="window.location='{% url 'add' %}'" class="btn btn-success">Add New</button>
+		</div>		
+	</div>
+	<hr/>
+	<div class="row">
+		{% for meeting in meetings %}
+		<div class="col-lg-4 calender_events">
+			<div class="details">				
+				<h2>{{ meeting.name }}</h2>
+				<h4>{{ meeting.date|date:"Y M D" }}</h4>
+				<p>
+					{{ meeting.description|truncatechars:50 }}
+				</p>
+				<button onclick="window.location='{% url 'details' pk=meeting.id %}'	" class='btn btn-primary'>view Details</button>
+				<!-- <button data-id={{meeting.id}} onclick="deleteMeeting(this)" class='btn btn-danger'>Delete</button> -->
+				<button onclick="window.location='{% url 'delete' meeting.id  %}'" class='btn btn-danger'>Delete</button>
+
+			</div>
+		</div>
+		{% endfor %}		
+	</div>
+</div>
+
+{% endblock %}
